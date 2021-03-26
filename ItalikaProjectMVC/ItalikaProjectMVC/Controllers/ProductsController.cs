@@ -19,9 +19,10 @@ namespace ItalikaProjectMVC.Controllers
         public async  Task<IActionResult> Index()
         {
             string error = "";
+            var lsProducts = new List<Models.Product>();
             try
             {
-                var lsProducts = await _Api.GetProducts();
+                lsProducts = await _Api.GetProducts();
             }
             catch (Exception ex)
             {
@@ -29,7 +30,7 @@ namespace ItalikaProjectMVC.Controllers
             }
            
 
-            ViewBag.Products = "";
+            ViewBag.Products = lsProducts;
             ViewBag.message = TempData["error"] ?? error;
             return View();
         }
@@ -51,7 +52,7 @@ namespace ItalikaProjectMVC.Controllers
             }
 
 
-            return View();
+            return View("Index");
         }
     }
 }

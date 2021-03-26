@@ -29,7 +29,9 @@ namespace ItlaikaProjectAPI.Controllers
             IdProduct = x.IdProduct,
             Sku = x.Sku,
             Fert = x.Fert,
-            strModel = x.IdTypeNavigation.Type,
+            Type = x.IdTypeNavigation.Type,
+            IdType =x.IdTypeNavigation.IdType,
+            Model = x.Model,
             Serie = x.Serie,
             Date = x.Date
             }).ToListAsync();
@@ -87,8 +89,8 @@ namespace ItlaikaProjectAPI.Controllers
         {
 
             TbProduct tbProduct = new TbProduct();
-            tbProduct.IdType = product.IdModel;
-            tbProduct.Model = product.strModel;
+            tbProduct.IdType = product.IdType;
+            tbProduct.Model = product.Model;
             tbProduct.Sku = product.Sku;
             tbProduct.Fert = product.Fert;
             tbProduct.Serie = product.Serie;

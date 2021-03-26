@@ -12,7 +12,7 @@ namespace ItalikaProjectMVC.Services
 {
     public class ItalikaAPI
     {
-        private static readonly string _apiURL = @"http://localhost:44371/";
+        private static readonly string _apiURL = @"http://localhost:56593/";
         public HttpClient _client;
 
         public ItalikaAPI()
@@ -45,6 +45,9 @@ namespace ItalikaProjectMVC.Services
 
             HttpResponseMessage response;
             string query = "api/TbProducts";
+
+            var clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, SslPolicyErrors) => true;
 
             response = await _client.GetAsync(query);
 
